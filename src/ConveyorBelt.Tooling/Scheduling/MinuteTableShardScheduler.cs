@@ -28,12 +28,12 @@ namespace ConveyorBelt.Tooling.Scheduling
                 offset.Subtract(TimeSpan.FromSeconds(offset.Second))
                     .Subtract(TimeSpan.FromMilliseconds(offset.Millisecond));
             var events = new List<Event>();
-            var totalMinutes = DateTimeOffset.UtcNow.Subtract(offset.AddMinutes(source.GracePeriodMinutes.Value)).TotalMinutes;
+            var totalMinutes = DateTimeOffset.UtcNow.Subtract(offset.AddMinutes(source.GracePeriodMinutes.Value)).TotalSeconds;
 
             var ofsted = new DateTimeOffset();
-            for (int i = 0; i < totalMinutes; i++)
+            for (int i = 0; i < totalMinutes; i+=10)
             {
-                ofsted = offset.AddMinutes(i + 1);
+                ofsted = offset.AddSeconds(i);
                 var shardKey = GetShardKey(ofsted);
                 events.Add(new Event(new ShardKeyArrived(){ Source = source.ToSummary(), ShardKey = shardKey}));
                 if(source.MaxItemsInAScheduleRun.HasValue && i >= source.MaxItemsInAScheduleRun)

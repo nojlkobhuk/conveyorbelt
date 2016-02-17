@@ -16,9 +16,9 @@ namespace ConveyorBelt.Tooling.Querying
             var account = CloudStorageAccount.Parse(shardKeyArrived.Source.ConnectionString);
             var client = account.CreateCloudTableClient();
             var table = client.GetTableReference(shardKeyArrived.Source.DynamicProperties["TableName"].ToString());
-
+            var Filter = TableQuery.GenerateFilterCondition("PartitionKey", "eq", new DateTime(long.Parse(shardKeyArrived.ShardKey)).ToString("yyyyMMdd-hhmms"));
             return Task.FromResult(table.ExecuteQuery(new TableQuery().Where(
-                TableQuery.GenerateFilterCondition("PartitionKey", "eq", shardKeyArrived.ShardKey))));
+                TableQuery.GenerateFilterCondition("PartitionKey", "eq", new DateTime(long.Parse(shardKeyArrived.ShardKey)).ToString("yyyyMMdd-hhmms")))));
         }
     }
 }

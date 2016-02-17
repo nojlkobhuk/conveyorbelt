@@ -1,0 +1,43 @@
+﻿{
+    "___type_name___": {
+        "properties": {
+            "@timestamp": {
+                "type": "date",
+                "format": "dateOptionalTime"
+            },
+            "LoggerName": {
+                "type": "string",
+                "index": "not_analyzed"
+            },
+            "CorrelationId": {
+                "type": "long"
+            },
+            "Level": {
+                "type": "string"
+            },
+            "Message": {
+                "type": "string"
+            },
+            "PartitionKey": {
+                "type": "string",
+                "index": "not_analyzed"
+            },
+            "Identity": {
+                "type": "string",
+                "index": "not_analyzed"
+            },
+            "Host": {
+                "type": "string",
+                "index": "not_analyzed"
+            },
+            "RowKey": {
+                "type": "string",
+                "index": "not_analyzed"
+            },
+            "Request": {
+                "type": "string",
+                "index": "not_analyzed"
+            }
+        }
+    }
+}

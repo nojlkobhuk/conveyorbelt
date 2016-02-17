@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ServiceDefinition name="ConveyorBelt" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2014-06.2.4">
+<ServiceDefinition name="ConveyorBelt" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
   <WorkerRole name="ConveyorBelt.Worker" vmsize="Medium">
     <Imports>
-      <Import moduleName="Diagnostics" />
+      <Import moduleName="RemoteAccess" />
+      <Import moduleName="RemoteForwarder" />
     </Imports>
     <ConfigurationSettings>
       <Setting name="ConveyorBelt.ElasticSearchUrl" />
@@ -14,6 +15,7 @@
       <Setting name="ConveyorBelt.Storage.ClusterLockContainer" />
       <Setting name="ConveyorBelt.Storage.ClusterLockRoot" />
       <Setting name="ConveyorBelt.Storage.ClusterLockDurationSeconds" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
     </ConfigurationSettings>
   </WorkerRole>
 </ServiceDefinition>

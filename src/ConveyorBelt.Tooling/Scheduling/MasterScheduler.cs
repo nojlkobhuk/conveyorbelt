@@ -57,7 +57,7 @@ namespace ConveyorBelt.Tooling.Scheduling
                         source.LastScheduled = DateTimeOffset.UtcNow.AddYears(-1);
 
                     // if has been recently scheduled
-                    if (source.LastScheduled.Value.AddMinutes(source.SchedulingFrequencyMinutes.Value) >
+                    if (source.LastScheduled.Value.AddSeconds(source.SchedulingFrequencyMinutes.Value) >
                         DateTimeOffset.UtcNow)
                     {
                         TheTrace.TraceInformation("MasterScheduler - Nothing to do with {0}. LastScheduled in Future {1}", 
