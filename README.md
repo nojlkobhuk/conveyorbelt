@@ -70,3 +70,6 @@ In Azure Storage Explorer (or your favourite tool) open `DiagnosticsSource` tabl
 That is it! After a few minutes, you should see documents appearing in your ES and after a while, all data since the initial LastOffsetPoint transfered to elasticsearch.
 
 
+=======
+# conveyorbelt
+Elasticsearch logger deliver
