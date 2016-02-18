@@ -33,7 +33,7 @@ namespace ConveyorBelt.Tooling.Scheduling
             var ofsted = new DateTimeOffset();
             for (int i = 0; i < totalMinutes; i+=10)
             {
-                ofsted = offset.AddSeconds(i);
+                ofsted = offset.AddSeconds(i + 10);
                 var shardKey = GetShardKey(ofsted);
                 events.Add(new Event(new ShardKeyArrived(){ Source = source.ToSummary(), ShardKey = shardKey}));
                 if(source.MaxItemsInAScheduleRun.HasValue && i >= source.MaxItemsInAScheduleRun)
