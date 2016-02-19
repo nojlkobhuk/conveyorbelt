@@ -35,7 +35,7 @@ namespace ConveyorBelt.Tooling.Actors
         {
             var shardKeyArrived = evnt.GetBody<ShardKeyArrived>();
             TheTrace.TraceInformation("Got {0} from {1} as {2}", shardKeyArrived.ShardKey, 
-                shardKeyArrived.Source.TypeName, new DateTime(long.Parse(shardKeyArrived.ShardKey)).ToString("yyyyMMdd-HHmms"));
+                shardKeyArrived.Source.TypeName, new DateTime(long.Parse(shardKeyArrived.ShardKey)).ToString("yyyyMMdd-HHmm0"));
             var shardKeyQuerier = (string) shardKeyArrived.Source.GetDynamicProperty(ConveyorBeltConstants.ShardKeyQuery);
             var query = FactoryHelper.Create<IShardKeyQuery>(shardKeyQuerier, typeof (TableStorageShardKeyQuery));
             var entities = await query.QueryAsync(shardKeyArrived);

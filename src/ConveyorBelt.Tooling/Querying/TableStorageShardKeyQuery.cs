@@ -16,17 +16,17 @@ namespace ConveyorBelt.Tooling.Querying
             var account = CloudStorageAccount.Parse(shardKeyArrived.Source.ConnectionString);
             var client = account.CreateCloudTableClient();
             var table = client.GetTableReference(shardKeyArrived.Source.DynamicProperties["TableName"].ToString());
-            var shardKeyEnd = long.Parse(shardKeyArrived.ShardKey) + 10000000;
+            var shardKeyEnd = long.Parse(shardKeyArrived.ShardKey) + 600000000;
             var Filter = new TableQuery().Where(
                 TableQuery.CombineFilters(
-                TableQuery.GenerateFilterCondition("PartitionKey", "ge", new DateTime(long.Parse(shardKeyArrived.ShardKey)).ToString("yyyyMMdd-hhmms")),
+                TableQuery.GenerateFilterCondition("PartitionKey", "ge", new DateTime(long.Parse(shardKeyArrived.ShardKey)).ToString("yyyyMMdd-hhmm0")),
                 TableOperators.And,
-                TableQuery.GenerateFilterCondition("PartitionKey", "le", new DateTime(shardKeyEnd).ToString("yyyyMMdd-hhmms"))));
+                TableQuery.GenerateFilterCondition("PartitionKey", "le", new DateTime(shardKeyEnd).ToString("yyyyMMdd-hhmm0"))));
             return Task.FromResult(table.ExecuteQuery(new TableQuery().Where(
                 TableQuery.CombineFilters(
-                TableQuery.GenerateFilterCondition("PartitionKey", "ge", new DateTime(long.Parse(shardKeyArrived.ShardKey)).ToString("yyyyMMdd-hhmms")), 
+                TableQuery.GenerateFilterCondition("PartitionKey", "ge", new DateTime(long.Parse(shardKeyArrived.ShardKey)).ToString("yyyyMMdd-hhmm0")), 
                 TableOperators.And,
-                TableQuery.GenerateFilterCondition("PartitionKey", "le", new DateTime(shardKeyEnd).ToString("yyyyMMdd-hhmms"))))));
+                TableQuery.GenerateFilterCondition("PartitionKey", "le", new DateTime(shardKeyEnd).ToString("yyyyMMdd-hhmm0"))))));
         }
     }
 }
