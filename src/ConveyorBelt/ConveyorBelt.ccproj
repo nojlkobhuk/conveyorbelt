@@ -59,6 +59,7 @@
   <ItemGroup>
     <PublishProfile Include="Profiles\ConveyorBeltGotBetterProduction.azurePubxml" />
     <PublishProfile Include="Profiles\solo-loggerProduction.azurePubxml" />
+    <PublishProfile Include="Profiles\solo-searchProduction.azurePubxml" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
